@@ -1,4 +1,4 @@
-# Secreto Client 😎
+# Secreto Client 😎 -- gurpreet
 
 The Web Client for the [Secreto-Server](https://gitlab.com/k2511/secreto-server) which allows you to manage secrets in Kubernetes.
 The Secreto-Client provides a minimalistic approach to Creating, Viewing, and Deleting Kubernetes Secrets.
