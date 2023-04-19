@@ -1,0 +1,27 @@
+stages:
+  - build
+  - test
+
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
+build:
+  image: node:16-alpine
+  stage: build
+  script: 
+    - apk update
+    - npm install --silent
+    - npm install react-scripts -g --silent
+    - npm run-script build
+
+docker-build:
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    IMAGE: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG
+  stage: build
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE:$CI_COMMIT_SHA -t $IMAGE:latest .
+    - docker push -a $IMAGE

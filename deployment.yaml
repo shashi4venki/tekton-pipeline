@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: react-k8s-info
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-k8s-info
+  template:
+    metadata:
+      labels:
+        app: react-k8s-info
+    spec:
+      containers:
+        - name: react-k8s-info
+          image: zarakmughal/react-k8s-info
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always

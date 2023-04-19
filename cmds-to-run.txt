@@ -1,0 +1,4 @@
+npm install react-scripts -g --silent
+npm install semantic-ui-react -g --silent
+npm install axios -g --silent
+npm install --silent
